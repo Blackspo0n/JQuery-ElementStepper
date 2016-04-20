@@ -5,12 +5,14 @@
         jQuery(options.next).bind("click", function (e) {
             if(!sliding) {
                 var prevnextreturn = options.onPrevNextEvent.call(self, true);
-                if(prevnextreturn == false){
+
+                if(prevnextreturn == false) {
                     return false;
                 }
                 sliding = true;
 
                 var $curSlider = jQuery(self).find(".showedstep");
+
                 setTimeout(function () {
                     sliding = false;
                 }, options.duration);
@@ -31,16 +33,14 @@
                     easing : options.easing || 'swing'
                 }).addClass("showedstep");
 
-
                 options.after.call($curSlider, jQuery(self).find(".showedstep"), options, true);
-
             }
-
         });
+
         jQuery(options.prev).bind("click", function () {
             if(!sliding) {
                 var prevnextreturn = options.onPrevNextEvent.call(self, false);
-                if(prevnextreturn == false){
+                if(prevnextreturn == false) {
                     return false;
                 }
                 var $curSlider = jQuery(self).find(".showedstep");
@@ -92,29 +92,32 @@
 
         return this.each(function () {
             var options;
-            options = jQuery.extend(true, {}, jQuery.fn.elementStepper.methods, jQuery.fn.elementStepper.methods, opt);
+            options = jQuery.extend(true, {}, jQuery.fn.elementStepper.options, jQuery.fn.elementStepper.methods, opt);
 
             jQuery.data(this, 'options', {
                 options: options
             });
 
             stepper.call(this, options);
-
             eventbinder.call(this, options);
         });
 
     };
+
     jQuery.fn.elementStepper.methods = {
-        childElement : 'div',
-        prev: null,
-        next : null,
-        easing: 'swing',
-        duration : 500,
         onPrevNextEvent : function (next) {
 
         },
         after : function () {
 
         }
+    };
+
+    jQuery.fn.elementStepper.options = {
+        childElement : 'div',
+        prev: null,
+        next : null,
+        easing: 'swing',
+        duration : 500
     };
 })(jQuery);
