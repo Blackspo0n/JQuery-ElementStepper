@@ -3,12 +3,6 @@
     function eventbinder(options) {
         var self = this;
         jQuery(options.next).bind("click", function (e) {
-            switch(e.target.tagName.toLowerCase()) {
-                case '':
-                default:
-
-                    break;
-            }
             if(!sliding) {
                 var prevnextreturn = options.onPrevNextEvent.call(self, true);
                 if(prevnextreturn == false){
