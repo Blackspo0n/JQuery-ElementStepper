@@ -15,7 +15,7 @@ Define a container which can be hold the subelements. And define back and forwar
 
 ```
 
-Than you have setup a little jQuery javascript:
+Than you have to setup a little jQuery javascript:
 
 ```javascript
     jQuery(parent).find(".divSlider").elementStepper({
